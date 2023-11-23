@@ -6,30 +6,25 @@ using namespace std;
 class Solution
 {
 	public:
-	  
-	  
+	
+	   long long int powermod(long long int x, long long int n, long long int M)
+	   {
+	        if(n==0) return 1;
+	        
+	        long long int t=powermod(x,n/2,M);
+	        
+	        if(n%2==0)
+	        {
+	             return (t*t)%M;
+	        }else
+	        {
+	             return (((x*t)%M)*t)%M;
+	        }
+	   }
 		long long int PowMod(long long int x,long long int n,long long int M)
 		{
-		    
-		     if (n == 0) {
-        return 1;
-    }
-
-    long long int result = 1;
-    x = x % M;
-
-    while (n > 0) {
-        // If n is odd, multiply x with result
-        if (n % 2 == 1) {
-            result = (result * x) % M;
-        }
-
-        // n must be even now
-        n = n / 2;
-        x = (x * x) % M;
-    }
-
-    return result;
+		   
+		   return powermod(x,n,M);
 		}
 };
 
